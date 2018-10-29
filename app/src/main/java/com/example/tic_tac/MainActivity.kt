@@ -23,34 +23,39 @@ class MainActivity : AppCompatActivity() {
         var x = 0
         fun clickFun(button: Button) {
 
-                if (x%2 == 0 )
+            if (button.tag=="0") {
+                button.tag = "1"
+                if (x % 2 == 0)
                     button.text = "X"
                 else
                     button.text = "O"
 
 
 
-                if(     (button00.text == button11.text && button11.text == button22.text) ||
+                if ((button00.text == button11.text && button11.text == button22.text) ||
                         (button02.text == button11.text && button11.text == button20.text) ||
                         (button00.text == button01.text && button01.text == button02.text) ||
                         (button10.text == button11.text && button11.text == button12.text) ||
-                        (button20.text == button21.text && button21.text == button22.text) ){
+                        (button20.text == button21.text && button21.text == button22.text)) {
 
-                    if (x%2==0) {
+                    if (x % 2 == 0) {
                         println("X wins")
-                        winText.text="palyer 1 wins"
+                        winText.text = "palyer 1 wins"
 
-                    }
-                    else {
+                    } else {
                         println("O wins")
-                        winText.text="palyer 2 wins"
+                        winText.text = "palyer 2 wins"
                     }
-
-
 
                 }
-                 x++
+                else {
+                    if (x == 8)
+                        winText.text = "Draw!!!"
+                }
+                x++
 
+
+            }
 
 
 
