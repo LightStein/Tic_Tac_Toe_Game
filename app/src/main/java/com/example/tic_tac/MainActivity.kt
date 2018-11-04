@@ -9,17 +9,22 @@ class MainActivity : AppCompatActivity() {
 
 
 
-
+    fun clearBtn(){
+        button00.text=""
+        button01.text=" "
+        button02.text="  "
+        button10.text="   "
+        button11.text="    "
+        button12.text="     "
+        button20.text="      "
+        button21.text="       "
+        button22.text="        "
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
-
-        val buttons = listOf(listOf(button00,button01,button02),
-                             listOf(button10,button11,button12),
-                             listOf(button20,button21,button22))
         var x = 0
         fun clickFun(button: Button) {
 
@@ -30,35 +35,31 @@ class MainActivity : AppCompatActivity() {
                 else
                     button.text = "O"
 
-
-
                 if ((button00.text == button11.text && button11.text == button22.text) ||
                         (button02.text == button11.text && button11.text == button20.text) ||
                         (button00.text == button01.text && button01.text == button02.text) ||
                         (button10.text == button11.text && button11.text == button12.text) ||
+                        (button01.text == button11.text && button11.text == button21.text) ||
                         (button20.text == button21.text && button21.text == button22.text)) {
 
                     if (x % 2 == 0) {
                         println("X wins")
                         winText.text = "palyer 1 wins"
-
+                        clearBtn()
                     } else {
                         println("O wins")
                         winText.text = "palyer 2 wins"
+                        clearBtn()
                     }
-
                 }
                 else {
-                    if (x == 8)
+                    if (x == 8) {
                         winText.text = "Draw!!!"
+                        clearBtn()
+                    }
                 }
                 x++
-
-
             }
-
-
-
         }
 
 
@@ -89,9 +90,6 @@ class MainActivity : AppCompatActivity() {
         button21.setOnClickListener(){
             clickFun(button21)
         }
-
-
-
 
     }
 }
